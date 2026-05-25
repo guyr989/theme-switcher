@@ -1,0 +1,14 @@
+{
+  "name": "theme-switcher-js",
+  "version": "1.0.0",
+  "description": "CSS theme-switching utility: browser plugin + Node.js CLI with 9 built-in color themes",
+  "main": "theme-switcher.js",
+  "files": ["theme-switcher.js"],
+  "keywords": ["theme", "css", "color", "switcher", "plugin", "dark-mode", "palette"],
+  "author": "guyr989",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guyr989/theme-switcher.git"
+  }
+}

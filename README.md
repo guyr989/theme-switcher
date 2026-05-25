@@ -2,6 +2,37 @@
 
 A dual-mode CSS theme-switching utility — works as a **browser plugin** (drop a `<script>` tag into any HTML page) and as a **Node.js CLI** (process HTML/CSS files from the command line).
 
+## Installation
+
+### CDN (no build step required)
+
+```html
+<!-- jsDelivr via GitHub (recommended) -->
+<script src="https://cdn.jsdelivr.net/gh/guyr989/theme-switcher@1.0.0/theme-switcher.js"></script>
+
+<!-- jsDelivr via npm -->
+<script src="https://cdn.jsdelivr.net/npm/theme-switcher-js@1.0.0/theme-switcher.js"></script>
+
+<!-- unpkg -->
+<script src="https://unpkg.com/theme-switcher-js@1.0.0/theme-switcher.js"></script>
+```
+
+### npm
+
+```bash
+npm install theme-switcher-js
+```
+
+### Self-hosted
+
+Download [`theme-switcher.js`](theme-switcher.js) and serve it yourself:
+
+```html
+<script src="/path/to/theme-switcher.js"></script>
+```
+
+---
+
 ## Built-in Themes
 
 | Name | Label | Accent |
