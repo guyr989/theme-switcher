@@ -28,219 +28,259 @@
    *   extra  – array of { selector, property, value } for hardcoded colors
    * ───────────────────────────────────────────────────────────────────── */
 
+  /*
+   * COLOR THEORY NOTES
+   * ─────────────────────────────────────────────────────────────────────
+   * Every palette follows four rules:
+   *
+   * 1. 60-30-10 rule  — background(60) · surface+muted(30) · accent(10)
+   * 2. Hue-tinted neutrals — no pure grays; every neutral carries the
+   *    dominant hue so the palette feels cohesive, not pasted together.
+   * 3. Harmonic accent — accent is either COMPLEMENTARY (opposite hue,
+   *    max visual pop) or ANALOGOUS (adjacent hue, elegant harmony).
+   * 4. Saturation arc — darks: richly saturated · lights: same hue, washed.
+   *    The glow is the accent hex converted to rgba at 22% opacity.
+   * ───────────────────────────────────────────────────────────────────── */
+
   var THEMES = {
 
+    // ── Default — OgEnergy brand ────────────────────────────────────────
+    // Complementary pair: deep slate-navy (primary) + vivid orange (accent).
+    // Blue–orange is the strongest natural complementary contrast.
     default: {
       label: 'Default (OgEnergy)',
       vars: {
-        'color-primary':       '#0f172a',
-        'color-secondary':     '#1e293b',
-        'color-accent':        '#f97316',
-        'color-accent-dark':   '#ea580c',
-        'color-accent-glow':   'rgba(249,115,22,.25)',
-        'color-background':    '#fafafa',
+        'color-primary':       '#0d1526',  // deep slate-navy
+        'color-secondary':     '#1a2640',
+        'color-accent':        '#f97316',  // vivid orange — complement to navy
+        'color-accent-dark':   '#e06010',
+        'color-accent-glow':   'rgba(249,115,22,.22)',
+        'color-background':    '#f9fbff',  // barely blue-white (tinted neutral)
         'color-surface':       '#ffffff',
-        'color-foreground':    '#0f172a',
-        'color-muted':         '#f1f5f9',
-        'color-muted-text':    '#64748b',
-        'color-border':        '#e2e8f0',
+        'color-foreground':    '#0d1526',
+        'color-muted':         '#eef2fa',  // blue-tinted muted
+        'color-muted-text':    '#4f6080',  // blue-gray — same hue family
+        'color-border':        '#d8e0f0',
       },
       extra: []
     },
 
-    /* ── MUSIC THEMES ───────────────────────────────────────────────── */
+    // ── MUSIC THEMES ────────────────────────────────────────────────────
 
+    // Pop — split-complementary: deep violet + hot magenta accent.
+    // Maxed saturation on the accent (bubblegum energy).
+    // Backgrounds tinted with the primary violet hue.
     pop: {
       label: 'Pop',
       vars: {
-        'color-primary':       '#1a0533',
-        'color-secondary':     '#2d0a52',
-        'color-accent':        '#e040fb',
-        'color-accent-dark':   '#aa00ff',
-        'color-accent-glow':   'rgba(224,64,251,.28)',
-        'color-background':    '#fdf4ff',
-        'color-surface':       '#ffffff',
-        'color-foreground':    '#1a0533',
-        'color-muted':         '#f3e5f5',
-        'color-muted-text':    '#7b1fa2',
-        'color-border':        '#e1bee7',
+        'color-primary':       '#1e0040',  // deep violet
+        'color-secondary':     '#320065',  // vivid purple
+        'color-accent':        '#f200aa',  // hot magenta — max saturation
+        'color-accent-dark':   '#c2008a',
+        'color-accent-glow':   'rgba(242,0,170,.22)',
+        'color-background':    '#fff4fe',  // barely pink-tinted
+        'color-surface':       '#fffaff',
+        'color-foreground':    '#1e0040',
+        'color-muted':         '#f5e0ff',  // light violet — same hue as primary
+        'color-muted-text':    '#8b16c0',  // vivid purple, readable on light
+        'color-border':        '#e0b8f8',  // soft violet
       },
       extra: [
-        { sel: '.nav',        prop: 'background', val: 'rgba(253,244,255,.92)' },
-        { sel: '.footer',     prop: 'background', val: '#1a0533' },
-        { sel: '.stats-bar',  prop: 'background', val: '#2d0a52' },
-        { sel: '.cta-section',prop: 'background', val: 'linear-gradient(135deg,#1a0533 0%,#4a148c 100%)' },
-        { sel: '.page-hero',  prop: 'background', val: 'linear-gradient(150deg,#1a0533 0%,#4a148c 60%,#880e4f 100%)' },
+        { sel: '.nav',        prop: 'background', val: 'rgba(255,244,254,.92)' },
+        { sel: '.footer',     prop: 'background', val: '#1e0040' },
+        { sel: '.stats-bar',  prop: 'background', val: '#320065' },
+        { sel: '.cta-section',prop: 'background', val: 'linear-gradient(135deg,#1e0040 0%,#560090 100%)' },
+        { sel: '.page-hero',  prop: 'background', val: 'linear-gradient(150deg,#1e0040 0%,#560090 55%,#8a007a 100%)' },
       ]
     },
 
+    // Rock — near-monochromatic dark + blood-red accent (analogous warmth).
+    // Warm tint in every neutral — the whole palette breathes heat.
     rock: {
       label: 'Rock',
       vars: {
-        'color-primary':       '#0d0d0d',
-        'color-secondary':     '#1a1a1a',
-        'color-accent':        '#d32f2f',
-        'color-accent-dark':   '#b71c1c',
-        'color-accent-glow':   'rgba(211,47,47,.30)',
-        'color-background':    '#f5f5f5',
+        'color-primary':       '#110808',  // near-black, warm red tint
+        'color-secondary':     '#1e0e0e',  // dark warm-charcoal
+        'color-accent':        '#c41a00',  // blood red — desaturated for grit
+        'color-accent-dark':   '#9a1500',
+        'color-accent-glow':   'rgba(196,26,0,.25)',
+        'color-background':    '#f7f3f2',  // bone-white (warm tinted, not pure)
         'color-surface':       '#ffffff',
-        'color-foreground':    '#0d0d0d',
-        'color-muted':         '#eeeeee',
-        'color-muted-text':    '#616161',
-        'color-border':        '#bdbdbd',
+        'color-foreground':    '#110808',
+        'color-muted':         '#eee8e6',  // warm gray
+        'color-muted-text':    '#6e5550',  // warm brownish-gray
+        'color-border':        '#d6cbc8',  // warm gray border
       },
       extra: [
-        { sel: '.nav',        prop: 'background', val: 'rgba(245,245,245,.92)' },
-        { sel: '.footer',     prop: 'background', val: '#0d0d0d' },
-        { sel: '.stats-bar',  prop: 'background', val: '#1a1a1a' },
-        { sel: '.cta-section',prop: 'background', val: 'linear-gradient(135deg,#0d0d0d 0%,#3e0000 100%)' },
-        { sel: '.page-hero',  prop: 'background', val: 'linear-gradient(150deg,#0d0d0d 0%,#3e0000 60%,#212121 100%)' },
+        { sel: '.nav',        prop: 'background', val: 'rgba(247,243,242,.92)' },
+        { sel: '.footer',     prop: 'background', val: '#110808' },
+        { sel: '.stats-bar',  prop: 'background', val: '#1e0e0e' },
+        { sel: '.cta-section',prop: 'background', val: 'linear-gradient(135deg,#110808 0%,#400000 100%)' },
+        { sel: '.page-hero',  prop: 'background', val: 'linear-gradient(150deg,#110808 0%,#400000 60%,#1e0e0e 100%)' },
       ]
     },
 
+    // Classical — analogous warm harmony: mahogany → rich brown → antique gold.
+    // All colors share the 25°–45° warm-orange hue range.
+    // Parchment backgrounds evoke aged scores and concert halls.
     classical: {
       label: 'Classical',
       vars: {
-        'color-primary':       '#1a1200',
-        'color-secondary':     '#3e2a00',
-        'color-accent':        '#b8860b',
-        'color-accent-dark':   '#8b6508',
-        'color-accent-glow':   'rgba(184,134,11,.28)',
-        'color-background':    '#fffdf5',
-        'color-surface':       '#ffffff',
-        'color-foreground':    '#1a1200',
-        'color-muted':         '#fdf6e3',
-        'color-muted-text':    '#7c6002',
-        'color-border':        '#e8d8a0',
+        'color-primary':       '#1c0a00',  // deep mahogany
+        'color-secondary':     '#361500',  // rich warm brown
+        'color-accent':        '#c8940a',  // antique gold — analogous to brown
+        'color-accent-dark':   '#9e7308',
+        'color-accent-glow':   'rgba(200,148,10,.22)',
+        'color-background':    '#fffcf0',  // warm cream / parchment
+        'color-surface':       '#fffff8',  // very warm white
+        'color-foreground':    '#1c0a00',
+        'color-muted':         '#f8edd8',  // light parchment
+        'color-muted-text':    '#8a6830',  // warm brown — same hue family
+        'color-border':        '#e8d4a0',  // wheat / tan
       },
       extra: [
-        { sel: '.nav',        prop: 'background', val: 'rgba(255,253,245,.92)' },
-        { sel: '.footer',     prop: 'background', val: '#1a1200' },
-        { sel: '.stats-bar',  prop: 'background', val: '#3e2a00' },
-        { sel: '.cta-section',prop: 'background', val: 'linear-gradient(135deg,#1a1200 0%,#6b4c00 100%)' },
-        { sel: '.page-hero',  prop: 'background', val: 'linear-gradient(150deg,#1a1200 0%,#5c3d00 60%,#3e2a00 100%)' },
+        { sel: '.nav',        prop: 'background', val: 'rgba(255,252,240,.92)' },
+        { sel: '.footer',     prop: 'background', val: '#1c0a00' },
+        { sel: '.stats-bar',  prop: 'background', val: '#361500' },
+        { sel: '.cta-section',prop: 'background', val: 'linear-gradient(135deg,#1c0a00 0%,#6b3c00 100%)' },
+        { sel: '.page-hero',  prop: 'background', val: 'linear-gradient(150deg,#1c0a00 0%,#5a3000 55%,#361500 100%)' },
       ]
     },
 
+    // Jazz — complementary contrast: deep midnight navy vs warm amber/gold.
+    // Navy (210°) and amber (40°) sit ~170° apart — nearly perfect complement.
+    // Light side is warm-parchment; dark side is cool-blue → classic smoky contrast.
     jazz: {
       label: 'Jazz',
       vars: {
-        'color-primary':       '#0a1628',
-        'color-secondary':     '#112244',
-        'color-accent':        '#f0a500',
-        'color-accent-dark':   '#c8880a',
-        'color-accent-glow':   'rgba(240,165,0,.28)',
-        'color-background':    '#f8f5ee',
-        'color-surface':       '#ffffff',
-        'color-foreground':    '#0a1628',
-        'color-muted':         '#f0ebe0',
-        'color-muted-text':    '#5d4e2a',
-        'color-border':        '#ddd0b0',
+        'color-primary':       '#04101e',  // midnight navy-black
+        'color-secondary':     '#071c34',  // deep navy
+        'color-accent':        '#e0960c',  // warm amber — complement to navy
+        'color-accent-dark':   '#b87808',
+        'color-accent-glow':   'rgba(224,150,12,.22)',
+        'color-background':    '#f7f4ec',  // warm parchment (cigarette-smoke warmth)
+        'color-surface':       '#fefdf6',  // warm white
+        'color-foreground':    '#04101e',
+        'color-muted':         '#ede7d6',  // warm sand
+        'color-muted-text':    '#5c4c2e',  // warm brown — same hue as background
+        'color-border':        '#d8caa8',  // warm tan
       },
       extra: [
-        { sel: '.nav',        prop: 'background', val: 'rgba(248,245,238,.92)' },
-        { sel: '.footer',     prop: 'background', val: '#0a1628' },
-        { sel: '.stats-bar',  prop: 'background', val: '#112244' },
-        { sel: '.cta-section',prop: 'background', val: 'linear-gradient(135deg,#0a1628 0%,#2a3f6b 100%)' },
-        { sel: '.page-hero',  prop: 'background', val: 'linear-gradient(150deg,#0a1628 0%,#112244 60%,#2a3a60 100%)' },
+        { sel: '.nav',        prop: 'background', val: 'rgba(247,244,236,.92)' },
+        { sel: '.footer',     prop: 'background', val: '#04101e' },
+        { sel: '.stats-bar',  prop: 'background', val: '#071c34' },
+        { sel: '.cta-section',prop: 'background', val: 'linear-gradient(135deg,#04101e 0%,#1a3560 100%)' },
+        { sel: '.page-hero',  prop: 'background', val: 'linear-gradient(150deg,#04101e 0%,#071c34 55%,#1a3060 100%)' },
       ]
     },
 
+    // Metal — cold industrial monochromatic + electric cyan accent.
+    // Everything is blue-shifted; the cyan accent feels like electric sparks on steel.
+    // Cold tinted neutrals reinforce the machine-like precision.
     metal: {
       label: 'Metal',
       vars: {
-        'color-primary':       '#080c10',
-        'color-secondary':     '#111820',
-        'color-accent':        '#00e5ff',
-        'color-accent-dark':   '#00b8d4',
-        'color-accent-glow':   'rgba(0,229,255,.28)',
-        'color-background':    '#f0f4f8',
-        'color-surface':       '#ffffff',
-        'color-foreground':    '#080c10',
-        'color-muted':         '#e8ecf0',
-        'color-muted-text':    '#455a64',
-        'color-border':        '#b0bec5',
+        'color-primary':       '#06090e',  // cold near-black (blue tint)
+        'color-secondary':     '#0c1520',  // dark steel-blue
+        'color-accent':        '#00b4f0',  // electric cyan — cold complement to the dark
+        'color-accent-dark':   '#0090c0',
+        'color-accent-glow':   'rgba(0,180,240,.22)',
+        'color-background':    '#edf3f8',  // cold blue-gray light
+        'color-surface':       '#f6fafd',  // cold white
+        'color-foreground':    '#06090e',
+        'color-muted':         '#dce8f0',  // cold light blue
+        'color-muted-text':    '#3a5870',  // cold blue-gray — same hue as accent
+        'color-border':        '#aac4d8',  // cool steel blue
       },
       extra: [
-        { sel: '.nav',        prop: 'background', val: 'rgba(240,244,248,.92)' },
-        { sel: '.footer',     prop: 'background', val: '#080c10' },
-        { sel: '.stats-bar',  prop: 'background', val: '#111820' },
-        { sel: '.cta-section',prop: 'background', val: 'linear-gradient(135deg,#080c10 0%,#0d2135 100%)' },
-        { sel: '.page-hero',  prop: 'background', val: 'linear-gradient(150deg,#080c10 0%,#0d2135 60%,#1a2a3a 100%)' },
+        { sel: '.nav',        prop: 'background', val: 'rgba(237,243,248,.92)' },
+        { sel: '.footer',     prop: 'background', val: '#06090e' },
+        { sel: '.stats-bar',  prop: 'background', val: '#0c1520' },
+        { sel: '.cta-section',prop: 'background', val: 'linear-gradient(135deg,#06090e 0%,#0c2540 100%)' },
+        { sel: '.page-hero',  prop: 'background', val: 'linear-gradient(150deg,#06090e 0%,#0c2540 55%,#1a3050 100%)' },
       ]
     },
 
-    /* ── SPECIALTY THEMES ───────────────────────────────────────────── */
+    // ── SPECIALTY THEMES ────────────────────────────────────────────────
 
+    // Sci-Fi — dark forest/alien base + maxed-saturation biotech green.
+    // The neon green (HSL 150°, 100%, 45%) pops against the near-black green base.
+    // All neutrals are green-tinted — like looking through a NVG lens.
     scifi: {
       label: 'Sci-Fi',
       vars: {
-        'color-primary':       '#050d1a',
-        'color-secondary':     '#091628',
-        'color-accent':        '#00ff9f',
-        'color-accent-dark':   '#00cc7a',
-        'color-accent-glow':   'rgba(0,255,159,.28)',
-        'color-background':    '#f0faf6',
-        'color-surface':       '#ffffff',
-        'color-foreground':    '#050d1a',
-        'color-muted':         '#e0f5ed',
-        'color-muted-text':    '#2e7d64',
-        'color-border':        '#a7e8d0',
+        'color-primary':       '#010f06',  // near-black with green tint
+        'color-secondary':     '#021a0a',  // dark alien forest
+        'color-accent':        '#00e87a',  // biotech green — max saturation
+        'color-accent-dark':   '#00be62',
+        'color-accent-glow':   'rgba(0,232,122,.22)',
+        'color-background':    '#f0faf5',  // barely green-tinted
+        'color-surface':       '#f7fffc',  // green-white
+        'color-foreground':    '#010f06',
+        'color-muted':         '#d8f5e8',  // light mint
+        'color-muted-text':    '#1a6e48',  // dark green — same hue, readable
+        'color-border':        '#9ed8be',  // medium mint
       },
       extra: [
-        { sel: '.nav',        prop: 'background', val: 'rgba(240,250,246,.92)' },
-        { sel: '.footer',     prop: 'background', val: '#050d1a' },
-        { sel: '.stats-bar',  prop: 'background', val: '#091628' },
-        { sel: '.cta-section',prop: 'background', val: 'linear-gradient(135deg,#050d1a 0%,#003d2a 100%)' },
-        { sel: '.page-hero',  prop: 'background', val: 'linear-gradient(150deg,#050d1a 0%,#003d2a 60%,#091628 100%)' },
+        { sel: '.nav',        prop: 'background', val: 'rgba(240,250,245,.92)' },
+        { sel: '.footer',     prop: 'background', val: '#010f06' },
+        { sel: '.stats-bar',  prop: 'background', val: '#021a0a' },
+        { sel: '.cta-section',prop: 'background', val: 'linear-gradient(135deg,#010f06 0%,#003d20 100%)' },
+        { sel: '.page-hero',  prop: 'background', val: 'linear-gradient(150deg,#010f06 0%,#003d20 55%,#021a0a 100%)' },
       ]
     },
 
+    // Futuristic — deep indigo base + vivid violet accent (analogous harmony).
+    // Primary (indigo ~255°) and accent (violet ~270°) are analogous — 15° apart.
+    // Result: iridescent, holographic, single-hue depth rather than jarring contrast.
     futuristic: {
       label: 'Futuristic',
       vars: {
-        'color-primary':       '#07003d',
-        'color-secondary':     '#0e0066',
-        'color-accent':        '#6c63ff',
-        'color-accent-dark':   '#4a40e8',
-        'color-accent-glow':   'rgba(108,99,255,.30)',
-        'color-background':    '#f5f4ff',
-        'color-surface':       '#ffffff',
-        'color-foreground':    '#07003d',
-        'color-muted':         '#ede9ff',
-        'color-muted-text':    '#4a3fbf',
-        'color-border':        '#c9c4f5',
+        'color-primary':       '#05003a',  // deep space indigo
+        'color-secondary':     '#0c0060',  // vivid dark indigo
+        'color-accent':        '#7c3aed',  // vivid violet — analogous to indigo
+        'color-accent-dark':   '#5b21b6',
+        'color-accent-glow':   'rgba(124,58,237,.25)',
+        'color-background':    '#f7f5ff',  // barely violet-tinted
+        'color-surface':       '#fdfcff',  // violet-white
+        'color-foreground':    '#05003a',
+        'color-muted':         '#ede8ff',  // light lavender
+        'color-muted-text':    '#5b34c8',  // vivid purple — readable on light
+        'color-border':        '#ccc0ff',  // soft lavender
       },
       extra: [
-        { sel: '.nav',        prop: 'background', val: 'rgba(245,244,255,.92)' },
-        { sel: '.footer',     prop: 'background', val: '#07003d' },
-        { sel: '.stats-bar',  prop: 'background', val: '#0e0066' },
-        { sel: '.cta-section',prop: 'background', val: 'linear-gradient(135deg,#07003d 0%,#1a00b8 100%)' },
-        { sel: '.page-hero',  prop: 'background', val: 'linear-gradient(150deg,#07003d 0%,#0e0066 60%,#2400c8 100%)' },
+        { sel: '.nav',        prop: 'background', val: 'rgba(247,245,255,.92)' },
+        { sel: '.footer',     prop: 'background', val: '#05003a' },
+        { sel: '.stats-bar',  prop: 'background', val: '#0c0060' },
+        { sel: '.cta-section',prop: 'background', val: 'linear-gradient(135deg,#05003a 0%,#1a00b8 100%)' },
+        { sel: '.page-hero',  prop: 'background', val: 'linear-gradient(150deg,#05003a 0%,#0c0060 55%,#2400c8 100%)' },
       ]
     },
 
+    // Patriotic — split-complementary: deep navy (210°) + bold crimson (355°).
+    // Red and blue are ~145° apart — strong tension, officially bold.
+    // Light side carries a faint cool-blue tint — crisp and authoritative.
     patriotic: {
       label: 'Patriotic',
       vars: {
-        'color-primary':       '#00205b',
-        'color-secondary':     '#003087',
-        'color-accent':        '#bf0a30',
-        'color-accent-dark':   '#8b0020',
-        'color-accent-glow':   'rgba(191,10,48,.28)',
-        'color-background':    '#f8f9ff',
+        'color-primary':       '#00183a',  // deep navy
+        'color-secondary':     '#002768',  // true flag-blue
+        'color-accent':        '#c01021',  // bold crimson
+        'color-accent-dark':   '#920c1a',
+        'color-accent-glow':   'rgba(192,16,33,.22)',
+        'color-background':    '#f4f7ff',  // barely blue-tinted (official, clean)
         'color-surface':       '#ffffff',
-        'color-foreground':    '#00205b',
-        'color-muted':         '#eef1ff',
-        'color-muted-text':    '#334d8f',
-        'color-border':        '#b0bbdd',
+        'color-foreground':    '#00183a',
+        'color-muted':         '#e6ecf8',  // light blue
+        'color-muted-text':    '#2a4888',  // medium navy — same hue as primary
+        'color-border':        '#afc0e0',  // soft blue
       },
       extra: [
-        { sel: '.nav',        prop: 'background', val: 'rgba(248,249,255,.92)' },
-        { sel: '.footer',     prop: 'background', val: '#00205b' },
-        { sel: '.stats-bar',  prop: 'background', val: '#003087' },
-        { sel: '.cta-section',prop: 'background', val: 'linear-gradient(135deg,#00205b 0%,#003087 100%)' },
-        { sel: '.page-hero',  prop: 'background', val: 'linear-gradient(150deg,#00205b 0%,#003087 60%,#bf0a30 100%)' },
+        { sel: '.nav',        prop: 'background', val: 'rgba(244,247,255,.92)' },
+        { sel: '.footer',     prop: 'background', val: '#00183a' },
+        { sel: '.stats-bar',  prop: 'background', val: '#002768' },
+        { sel: '.cta-section',prop: 'background', val: 'linear-gradient(135deg,#00183a 0%,#002768 100%)' },
+        { sel: '.page-hero',  prop: 'background', val: 'linear-gradient(150deg,#00183a 0%,#002768 55%,#c01021 100%)' },
       ]
     },
 
