@@ -38,14 +38,14 @@ Download [`theme-switcher.js`](theme-switcher.js) and serve it yourself:
 | Name | Label | Accent |
 |---|---|---|
 | `default` | Default | Orange `#f97316` |
-| `pop` | Pop | Magenta `#e040fb` |
-| `rock` | Rock | Red `#d32f2f` |
-| `classical` | Classical | Dark Gold `#b8860b` |
-| `jazz` | Jazz | Amber `#f0a500` |
-| `metal` | Metal | Cyan `#00e5ff` |
-| `scifi` | Sci-Fi | Neon Green `#00ff9f` |
-| `futuristic` | Futuristic | Indigo `#6c63ff` |
-| `patriotic` | Patriotic | Crimson `#bf0a30` |
+| `pop` | Pop | Hot Magenta `#f200aa` |
+| `rock` | Rock | Blood Red `#c41a00` |
+| `classical` | Classical | Antique Gold `#c8940a` |
+| `jazz` | Jazz | Warm Amber `#e0960c` |
+| `metal` | Metal | Electric Cyan `#00b4f0` |
+| `scifi` | Sci-Fi | Biotech Green `#00e87a` |
+| `futuristic` | Futuristic | Vivid Violet `#7c3aed` |
+| `patriotic` | Patriotic | Bold Crimson `#c01021` |
 
 ---
 
